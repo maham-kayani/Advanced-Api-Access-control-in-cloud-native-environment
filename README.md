@@ -9,6 +9,9 @@ Modern cloud-native applications rely heavily on APIs and microservices, making 
 2- Shared/uncontrolled environments: Identity Providers (IdPs) using OAuth 2.0 provide centralized authentication and authorization through access tokens, SSO, MFA, and conditional access.
 
 ## Method:
+
+## Controlled Environment:
+
 I set up an Istio service mesh within the Kubernetes cluster to control communication between the services.
 I configured the client to access /server1 through HTTP while restricting access to /server2.
 Istio authorization policies were used to allow the permitted request and block the unauthorized request.
