@@ -10,7 +10,7 @@ Modern cloud-native applications rely heavily on APIs and microservices, making 
 
 ## Method:
 
-# Controlled Environment:
+### Controlled Environment:
 
 I set up an Istio service mesh within the Kubernetes cluster to control communication between the services.
 I configured the client to access /server1 through HTTP while restricting access to /server2.
