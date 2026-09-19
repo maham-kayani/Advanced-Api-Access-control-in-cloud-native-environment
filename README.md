@@ -5,4 +5,5 @@ In this project we compares security approaches in controlled and shared environ
 Modern cloud-native applications rely heavily on APIs and microservices, making API access control a critical security challenge. This thesis investigates advanced API access control in two environments:
 
 1- Controlled environments: Kubernetes Network Policies and service meshes such as Istio provide fine-grained network security, mTLS, and zero-trust access control.
+
 2- Shared/uncontrolled environments: Identity Providers (IdPs) using OAuth 2.0 provide centralized authentication and authorization through access tokens, SSO, MFA, and conditional access.
