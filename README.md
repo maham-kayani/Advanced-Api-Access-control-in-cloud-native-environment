@@ -43,12 +43,12 @@ api-access-control/
 | File | Purpose |
 |---|---|
 | `app/main.py` | The server app with `/`, `/dataset1` and `/dataset2`. It has no security code, because Kubernetes and Istio block requests before they reach the app. |
-![Controlled environment](fullpng)
+![Controlled environment](full.png)
 
 
 | `yaml/` | Namespace, service accounts, deployments, service, NetworkPolicy (only HTTP port 80 allowed) and Istio AuthorizationPolicies. |
 | `test-commands.sh` | Checks that `/` and `/dataset1` return **200** and `/dataset2` returns **403**. |
-![Controlled environment](ControlledEnvironment)
+![Controlled environment](ControlledEnvironment.png)
 ### Run
 
 ```bash
