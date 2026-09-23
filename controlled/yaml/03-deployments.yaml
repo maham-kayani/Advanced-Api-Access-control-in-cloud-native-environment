@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: server-side
+  namespace: controlled
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: server-side
+  template:
+    metadata:
+      labels:
+        app: server-side
+    spec:
+      serviceAccountName: server-side-sa
+      containers:
+      - name: server
+        image: server-side:1.0        # built from controlled/app/Dockerfile
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 80
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: client-side
+  namespace: controlled
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: client-side
+  template:
+    metadata:
+      labels:
+        app: client-side
+    spec:
+      serviceAccountName: client-side-sa
+      containers:
+      - name: client
+        image: curlimages/curl:latest
+        command: ["sleep", "infinity"]

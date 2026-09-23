@@ -1,0 +1,59 @@
+# 1 - Allow dataset1 access
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-dataset1-access
+  namespace: controlled
+spec:
+  selector:
+    matchLabels:
+      app: server-side
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/controlled/sa/client-side-sa"]
+    to:
+    - operation:
+        methods: ["GET"]
+        paths: ["/dataset1"]
+---
+# 2 - Deny dataset2 access
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: deny-dataset2-access
+  namespace: controlled
+spec:
+  selector:
+    matchLabels:
+      app: server-side
+  action: DENY
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/controlled/sa/client-side-sa"]
+    to:
+    - operation:
+        methods: ["GET"]
+        paths: ["/dataset2"]
+---
+# 3 - Allow public access
+apiVersion: security.istio.io/v1beta1
+kind: AuthorizationPolicy
+metadata:
+  name: allow-public-access
+  namespace: controlled
+spec:
+  selector:
+    matchLabels:
+      app: server-side
+  action: ALLOW
+  rules:
+  - from:
+    - source:
+        principals: ["cluster.local/ns/controlled/sa/client-side-sa"]
+    to:
+    - operation:
+        methods: ["GET"]
+        paths: ["/"]

@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-client-to-server-http
+  namespace: controlled
+spec:
+  podSelector:
+    matchLabels:
+      app: server-side
+  policyTypes:
+  - Ingress
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: client-side
+    ports:
+    - protocol: TCP
+      port: 80          # only HTTP; port 100 (SSH test) is blocked
