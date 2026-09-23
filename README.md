@@ -123,6 +123,11 @@ curl http://localhost:8000/read
 2. The cached tokens and public key can become outdated, so tokens must be kept short-lived to limit this risk.
 
 ---
+## 5. Solution: short-lived RPT + JavaScript policy (Keycloak authorization)
+During the authorization step, I tested a JavaScript policy in Keycloak for dynamic access control. The policy asks an external score service for a score: if the score is 0.8 or higher, Keycloak grants the permission and issues the RPT; otherwise access is denied (403). If the score service fails, the score defaults to 0, so access is denied by default.
+
+Combined with a short RPT lifetime (for example 1–5 minutes), this reduces both disadvantages: each time the RPT is renewed, Keycloak evaluates the policy again with the current score. A client whose access is removed or whose score drops is refused at the next renewal, so an outdated token can only be used for a few minutes.
+
 
 ## Tech stack
 
