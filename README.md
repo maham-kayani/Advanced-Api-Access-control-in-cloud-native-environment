@@ -78,7 +78,13 @@ sh controlled/test-commands.sh
 5. If many requests arrive at once, only one of them asks Keycloak for a new token.
 
 In testing, the first request called Keycloak 3 times and the second request made no Keycloak calls at all.
+First Request:
+![Controlled environment](optimized.png)
 
+
+
+Second Request:
+![Controlled environment](authenticate.png)
 ### Run
 
 ```bash
