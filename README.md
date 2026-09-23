@@ -1,6 +1,6 @@
 # Advanced API Access Control in Cloud-Native Environments
 
-Internship project (March – September 2024) on securing APIs in two kinds of cloud-native environments:
+Ericsson Master's Internship project March – September 2024 on securing APIs in two kinds of cloud-native environments:
 
 - **Controlled environment:** you own the whole cluster, so security is enforced by the platform (Kubernetes NetworkPolicy + Istio service mesh).
 - **Uncontrolled / shared environment:** you don't control the infrastructure, so security is enforced by the application using OAuth 2.0 with **Keycloak**.
